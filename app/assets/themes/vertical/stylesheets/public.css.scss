@@ -1,0 +1,419 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+$navbarWidth: 208px;
+$altRed: #b51714;
+$darkBrown: #3b2d2c;
+$mediumBrown: #504646;
+$lightBrown: #ac9f93;
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+$black:                 #000;// !default
+$grayDarker:            #222;// !default
+$grayDark:              #333;// !default
+$gray:                  #555;// !default
+$grayLight:             #999;// !default
+$grayLighter:           #F8F8F8;// !default
+$white:                 #fff;// !default
+
+
+// Accent colors
+// -------------------------
+$blue:                  #049cdb;// !default
+$blueDark:              #0064cd;// !default
+$green:                 #46a546;// !default
+$red:                   #9d261d;// !default
+$yellow:                #ffc40d;// !default
+$orange:                #f89406;// !default
+$pink:                  #c3325f;// !default
+$purple:                #7a43b6;// !default
+
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $lightBrown;//$grayLighter;// !default
+$textColor:             $grayDark;// !default
+
+
+// Links
+// -------------------------
+$linkColor:             $gray;// !default
+$linkColorHover:        darken($linkColor, 15%);// !default
+
+
+// Typography
+// -------------------------
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;// !default
+$serifFontFamily:       "ltc-bodoni-175", Georgia, "Times New Roman", Times, serif;// !default
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;// !default
+
+$baseFontSize:          13px;// !default
+$baseFontFamily:        $sansFontFamily;// !default
+$baseLineHeight:        18px;// !default
+$altFontFamily:         $serifFontFamily;// !default
+
+$headingsFontFamily:    inherit;// !default // empty to use BS default, @baseFontFamily
+$headingsFontWeight:    bold;// !default    // instead of browser default, bold
+$headingsColor:         inherit;// !default // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+$tableBackground:                   transparent;// !default // overall background-color
+$tableBackgroundAccent:             #f9f9f9;// !default // for striping
+$tableBackgroundHover:              #f5f5f5;// !default // for hover
+$tableBorder:                       #ddd;// !default // table and cell border
+
+
+// Buttons
+// -------------------------
+$btnBackground:                     $white;// !default
+$btnBackgroundHighlight:            darken($white, 10%);// !default
+$btnBorder:                         #ccc;// !default
+
+$btnPrimaryBackground:              $linkColor;// !default
+$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%);// !default
+
+$btnInfoBackground:                 #5bc0de;// !default
+$btnInfoBackgroundHighlight:        #2f96b4;// !default
+
+$btnSuccessBackground:              #62c462;// !default
+$btnSuccessBackgroundHighlight:     #51a351;// !default
+
+$btnWarningBackground:              lighten($orange, 15%);// !default
+$btnWarningBackgroundHighlight:     $orange;// !default
+
+$btnDangerBackground:               #ee5f5b;// !default
+$btnDangerBackgroundHighlight:      #bd362f;// !default
+
+$btnInverseBackground:              $gray;// !default
+$btnInverseBackgroundHighlight:     $grayDarker;// !default
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;// !default
+$inputBorder:                   #ccc;// !default
+$inputBorderRadius:             3px;// !default
+$inputDisabledBackground:       $grayLighter;// !default
+
+$formActionsBackground:         #f5f5f5;// !default
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;// !default
+$dropdownBorder:                rgba(0,0,0,.2);// !default
+$dropdownLinkColor:             $grayDark;// !default
+$dropdownLinkColorHover:        $white;// !default
+$dropdownLinkBackgroundHover:   $linkColor;// !default
+$dropdownDividerTop:            #e5e5e5;// !default
+$dropdownDividerBottom:         $white;// !default
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:        1000;// !default
+$zindexPopover:         1010;// !default
+$zindexTooltip:         1020;// !default
+$zindexFixedNavbar:     1030;// !default
+$zindexModalBackdrop:   1040;// !default
+$zindexModal:           1050;// !default
+
+
+// Sprite icons path
+// -------------------------
+$iconSpritePath:        "twitter/bootstrap/glyphicons-halflings.png";// !default
+$iconWhiteSpritePath:   "twitter/bootstrap/glyphicons-halflings-white.png";// !default
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:       $grayLight;// !default
+
+
+// Hr border color
+// -------------------------
+$hrBorder:              $grayLighter;// !default
+
+
+// Navbar
+// -------------------------
+$navbarHeight:                    40px;// !default
+$navbarBackground:                $altRed;//#212121;// !default
+$navbarBackgroundHighlight:       $altRed;//#212121;// !default
+
+$navbarText:                      $lightBrown;// !default
+$navbarLinkColor:                 $lightBrown;// !default
+$navbarLinkColorHover:            $white;// !default
+$navbarLinkColorActive:           $navbarLinkColorHover;// !default
+$navbarLinkBackgroundHover:       transparent;// !default
+$navbarLinkBackgroundActive:      $navbarBackground;// !default
+
+$navbarSearchBackground:          lighten($navbarBackground, 25%);// !default
+$navbarSearchBackgroundFocus:     $white;// !default
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%);// !default
+$navbarSearchPlaceholderColor:    #ccc;// !default
+$navbarBrandColor:                $navbarLinkColor;// !default
+
+
+// Hero unit
+// -------------------------
+$heroUnitBackground:              $grayLighter;// !default
+$heroUnitHeadingColor:            inherit;// !default
+$heroUnitLeadColor:               inherit;// !default
+
+
+// Form states and alerts
+// -------------------------
+$warningText:             #c09853;// !default
+$warningBackground:       #fcf8e3;// !default
+$warningBorder:           darken(adjust_hue($warningBackground, -10deg), 3%);// !default
+
+$errorText:               #b94a48;// !default
+$errorBackground:         #f2dede;// !default
+$errorBorder:             darken(adjust_hue($errorBackground, -10deg), 3%);// !default
+
+$successText:             #468847;// !default
+$successBackground:       #dff0d8;// !default
+$successBorder:           darken(adjust_hue($successBackground, -10deg), 5%);// !default
+
+$infoText:                #3a87ad;// !default
+$infoBackground:          #d9edf7;// !default
+$infoBorder:              darken(adjust_hue($infoBackground, -10deg), 7%);// !default
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+$gridColumns:             12;// !default
+$gridColumnWidth:         60px;// !default
+$gridGutterWidth:         20px;// !default
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));// !default
+
+// Fluid grid
+// -------------------------
+$fluidGridColumnWidth:    6.382978723%;// !default
+$fluidGridGutterWidth:    2.127659574%;// !default
+
+
+@import "twitter/bootstrap";
+@import "gko/mixin.1.0.0";
+@import "gko/default";
+@import "vertical/stylesheets/galleria";
+/*-----------------------------------------
+ SHARED 
+----------------------------------------- */
+.html-text {
+	max-width: 680px;
+	letter-spacing: 1px;
+}
+/*-----------------------------------------
+ STRUCTURAL LAYOUT 
+----------------------------------------- */
+
+/*-----------------------------------------
+ HEADER
+----------------------------------------- */
+.navbar .brand {
+	margin: 0;
+	padding: 0;
+	a {
+		padding: 0;
+		margin: 0 auto;
+		background: transparent asset-url("vertical/images/logo.png", 'image') center center no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		text-decoration: none;
+		display: block;
+		width: 185px;
+		height: 120px;
+		@include hide-text;
+		
+	}
+}
+/*-----------------------------------------
+ FOOTER
+----------------------------------------- */
+/*-----------------------------------------
+ CONTENT
+----------------------------------------- */
+#main-container {
+	background-color: $lightBrown;
+}
+
+#main {
+	padding: $baseLineHeight;
+	
+}
+.page-title {
+	font-weight: normal;
+	margin-bottom: $baseLineHeight;
+}
+#bg {
+	position: relative;
+	opacity: 0.0000001;
+	-ms-interpolation-mode: bicubic;
+	image-rendering: optimizeQuality;
+	width: 100%;
+	height: auto;
+	display: block;
+}
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+@import "twitter/bootstrap/responsive";
+
+@media (min-width: 980px) {
+	#main-wrapper {
+		max-width: 1170px;
+		float: left;
+	}
+	#main-container {
+		position: absolute;
+		z-index: 1;
+		width: 684px;
+		left: 220px;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+	}
+	
+	/*-- HEADER
+	----------------------------------------- */
+	.navbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		z-index: 10;
+		min-width: $navbarWidth;
+		width: $navbarWidth;
+		z-index: 3;
+		background-color: $navbarBackground;
+		//@include gradient-vertical($navbarBackground, $navbarBackgroundHighlight);
+		background: $navbarBackground image-url("vertical/images/bg.png") left top repeat-y;
+	}
+	.navbar-inner {
+		background-color: none;
+		background: $navbarBackground image-url("vertical/images/bg.png") left top repeat-y;
+	  	@include border-radius(0);
+	  	@include box-shadow(none);
+		padding: 0;
+		padding: 0 22px;
+	}
+	.navbar .brand {
+		float: none;
+		clear: both;
+		@include center-block();
+		margin-top: 120px;
+		letter-spacing: 4px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 42px;
+		font-weight: 300;
+		font-size: 32px;
+	}
+	ul.subnav > li > a,
+	.navbar ul.nav > li > a {
+		text-transform: uppercase;
+		text-align: left;
+		font-size: $baseFontSize - 3;
+		letter-spacing: 2px;
+		text-shadow: none;
+		padding: 3px 15px;
+		color: $navbarLinkColor;
+	    &:hover {
+	      color: $navbarLinkColorHover;
+	    }
+	}
+	
+	#locales-menu {
+		float: none;
+		text-align: center;
+	}
+	#locales-menu ul.nav {
+		@include center-nav();
+	}
+//	#primary-menu ul.nav {
+//		@include center-block();
+//		left: auto;
+//		float: none;
+//	}
+	#primary-menu ul.nav > li {
+		float: none;
+	}
+
+	#closesubnav {
+		width: 40px;
+		height: 40px;
+		background: #2A2A2A url("../images/site/closesubnav.gif") no-repeat 13px 11px;
+		position: fixed;
+		bottom: 20px;
+		left: 294px;
+		cursor: pointer;
+		margin: 0;
+		padding: 0;
+		z-index: 99999;
+		opacity: 0;
+		-webkit-border-top-left-radius: 1px;
+		-webkit-border-bottom-left-radius: 1px;
+		-moz-border-radius-topleft: 1px;
+		-moz-border-radius-bottomleft: 1px;
+		border-top-left-radius: 1px;
+		border-bottom-left-radius: 1px;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	}
+	.dropdown-menu.subnav {
+		position: fixed;
+		left: $navbarWidth;
+		top: 0;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		width: $navbarWidth + 80;
+		@include box-shadow(none);
+		@include border-radius(0);
+		border-right: 1px solid $darkBrown;
+		border-top: 0;
+		border-left: 0;
+		border-right: 0;
+		background-color: #1C1C1C;
+		z-index: 2;
+		margin: 0;
+		padding: $baseLineHeight / 2;
+		@include box-sizing(border-box);
+		li {
+			font-size: 11px;
+			margin: 0 15px;
+			display: block;
+			border-top-color: #2C2C2C;
+			border-bottom-color: black;
+			position: relative;
+			top: 146px;
+			list-style: none;
+		}
+	}
+	
+	#bg {
+		position: fixed;
+		z-index: 0;
+	}
+
+}

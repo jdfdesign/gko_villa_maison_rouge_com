@@ -1,0 +1,22 @@
+<% image = site.homes.first.images.first %>
+<!doctype html>
+<%= render 'html_tag' %>
+<%= render 'head' %>
+<body id='<%= @body_id %>'>
+<!--[if lt IE 8]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+<div id="wrapper-wide-body">
+  	<%= render 'header' %>
+
+	<div id='main-container' class='container-fluid'>
+		<div id=" main-row" class="row-fluid"> 
+			<div id="main" class="span12">
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+</div>
+<img id="bg" src="<%= image.url %>">
+<%= render 'javascripts' %>	
+</body>
+</html>
