@@ -1865,7 +1865,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings.png);
+  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-2ed0cba6eca0f44737ab78f1e58bc11e.png);
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -1877,7 +1877,7 @@ table .span24 {
 
 /* line 29, ../../../../../../.rvm/gems/ruby-1.8.7-p358@global/bundler/gems/gko_cms3-947f34d82285/gko_core/vendor/assets/stylesheets/twitter/bootstrap/_sprites.scss */
 .icon-white {
-  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-white.png);
+  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-white-4fbb6a0b9b4e61912f486ac494a858f1.png);
 }
 
 /* line 33, ../../../../../../.rvm/gems/ruby-1.8.7-p358@global/bundler/gems/gko_cms3-947f34d82285/gko_core/vendor/assets/stylesheets/twitter/bootstrap/_sprites.scss */
@@ -5993,7 +5993,7 @@ ul.nav .text {
 .navbar .brand a {
   padding: 0;
   margin: 0 auto;
-  background: transparent url(/assets/vertical/images/logo.png) center center no-repeat;
+  background: transparent url(/assets/vertical/images/logo-8a8f8ff65ea08d50cc475c1caf98bcdb.png) center center no-repeat;
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
@@ -7166,13 +7166,13 @@ ul.nav .text {
     width: 208px;
     z-index: 3;
     background-color: #b51714;
-    background: #b51714 url(/assets/vertical/images/bg.png) left top repeat-y;
+    background: #b51714 url(/assets/vertical/images/bg-81bfea8f4d551d70998a67660529106c.png) left top repeat-y;
   }
 
   /* line 311, ../../../../app/assets/themes/vertical/stylesheets/public.css.scss */
   .navbar-inner {
     background-color: none;
-    background: #b51714 url(/assets/vertical/images/bg.png) left top repeat-y;
+    background: #b51714 url(/assets/vertical/images/bg-81bfea8f4d551d70998a67660529106c.png) left top repeat-y;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
