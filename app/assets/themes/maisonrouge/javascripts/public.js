@@ -11,7 +11,7 @@ var Site = {
 		$body = $("body"),
 		$window = $(window);
 		
-		$("#secondary-menu a, .nav-menu a").attr('data-remote', true)
+		$("#secondary-menu a").attr('data-remote', true)
 		.on('ajax:beforeSend', function(event, xhr, settings) {
 
 		})
