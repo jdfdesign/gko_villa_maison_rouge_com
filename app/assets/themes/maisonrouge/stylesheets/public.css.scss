@@ -220,9 +220,6 @@ $fluidGridGutterWidth:    2.127659574%;// !default
  STRUCTURAL LAYOUT 
 ----------------------------------------- */
 
-body {
-	background: $altRed image-url("bg.png") right top repeat-y;
-} 
 .page-title {
 	font-weight: normal;
 	margin-bottom: $baseLineHeight;
@@ -235,7 +232,9 @@ body {
 	.nav > li > a {
 	  padding: 8px 0;
 	}
-
+	.nav > li > a:hover {
+	  background-color: transparent;
+	}
 }
 #content-container {
 	background-color: $lightBrown;
