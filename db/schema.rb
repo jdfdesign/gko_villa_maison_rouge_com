@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807204224) do
+ActiveRecord::Schema.define(:version => 20120814154213) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(:version => 20120807204224) do
     t.integer  "site_id"
     t.integer  "section_id"
     t.integer  "account_id"
-    t.integer  "author_id"
     t.string   "type"
     t.string   "title"
     t.string   "slug"
@@ -148,10 +147,32 @@ ActiveRecord::Schema.define(:version => 20120807204224) do
     t.integer  "document_size"
     t.string   "document_uid"
     t.string   "document_ext"
-    t.integer  "author_id"
   end
 
-  add_index "documents", ["author_id"], :name => "index_documents_on_author_id"
+  create_table "field_types", :force => true do |t|
+    t.string   "name"
+    t.string   "presentation"
+    t.string   "value_type"
+    t.integer  "site_id"
+    t.string   "class_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "field_types", ["name"], :name => "index_field_types_on_name"
+  add_index "field_types", ["site_id", "class_name"], :name => "index_field_types_on_site_id_and_class_name"
+
+  create_table "field_values", :force => true do |t|
+    t.integer  "field_type_id"
+    t.integer  "customizable_id"
+    t.string   "customizable_type"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "field_values", ["customizable_id", "customizable_type"], :name => "index_field_values_on_customizable_id_and_customizable_type"
+  add_index "field_values", ["field_type_id"], :name => "index_field_values_on_field_type_id"
 
   create_table "image_assignments", :force => true do |t|
     t.integer  "position",                      :default => 1, :null => false
