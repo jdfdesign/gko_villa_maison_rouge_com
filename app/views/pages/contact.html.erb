@@ -1,0 +1,11 @@
+<% @body_id = "inquiry" %>
+<article class='row-fluid'>
+  <div class='span12'>
+	<div id="page-text">
+	<%= render_page_title(resource.title) %>
+	<%= render_html_text(resource.body) %>
+	
+	<%= render("inquiries/form") %>
+	</div>
+</div>
+</article>

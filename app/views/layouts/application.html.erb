@@ -1,0 +1,23 @@
+<!doctype html>
+<%= render 'html_tag' %>
+<%= render 'head' %>
+<body id='<%= @body_id %>'>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<div id="wrapper-wide-body">
+  <%= render 'header' %>
+  <div id='content-container' class='container-fluid'>
+     <div id="content" class='row-fluid'>
+		 <aside id='left-sidebar' class="span3"><%= yield :left_sidebar %></aside>
+         <div id="main-column" class='span9 <%= @body_id %>'>
+           <div class="main-column-inner">
+             <%= render "flash" %>
+             <%= yield %>
+           </div>
+         </div>
+     </div>
+  </div>
+  <%= render 'footer' %>
+</div>
+<%= render 'javascripts' %>
+</body>
+</html>
