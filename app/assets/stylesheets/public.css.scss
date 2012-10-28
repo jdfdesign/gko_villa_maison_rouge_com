@@ -2,12 +2,39 @@
 // Variables to customize the look and feel of Bootstrap
 // -----------------------------------------------------
 
-
+$navbarWidth: 220px; //! same as logo
+$lightRed: #b83b38;
 $altRed: #b51714;
+$darkRed: #8d110f;
 $darkBrown: #3b2d2c;
 $mediumBrown: #504646;
 $lightBrown: #ac9f93;
-$leftbarWidth: 220px; //! same as logo
+
+
+@mixin nav-link($borderColor) {
+	li {
+		float: none;
+		border-top: 1px solid lighten($borderColor, 10%);
+		border-bottom: 1px solid darken($borderColor, 10%);
+		&:first-child {
+			border-top: none;
+		};
+		&:last-child {
+			border-bottom: none;
+		};
+		a {
+			font-size: 14px;
+			text-transform: uppercase;
+			text-align: left;
+			letter-spacing: 1px;
+			text-shadow: none;
+			font-family: $altFontFamily;
+			font-weight: 300;
+		}
+	}
+
+}
+
 // GLOBAL VALUES
 // --------------------------------------------------
 
@@ -36,8 +63,8 @@ $purple:                #7a43b6;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $altRed;
-$textColor:             $white;
+$bodyBackground:        $darkBrown;
+$textColor:             $lightBrown;
 
 
 // Links
@@ -48,16 +75,16 @@ $linkColorHover:        $white;
 
 // Typography
 // -------------------------
-$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serifFontFamily:       "ltc-bodoni-175", Georgia, "Times New Roman", Times, serif;
+$sansFontFamily:        "nimbus-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
 
-$baseFontSize:          13px;
+$baseFontSize:          16px;
 $baseFontFamily:        $sansFontFamily;
-$baseLineHeight:        18px;
-$altFontFamily:         $serifFontFamily;
+$baseLineHeight:        22px;
+$altFontFamily:         "nimbus-sans-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+$headingsFontFamily:    $altFontFamily; // empty to use BS default, @baseFontFamily
 $headingsFontWeight:    bold;    // instead of browser default, bold
 $headingsColor:         inherit; // empty to use BS default, @textColor
 
@@ -150,11 +177,11 @@ $hrBorder:              $grayLighter;
 // Navbar
 // -------------------------
 $navbarHeight:                    40px;
-$navbarBackground:                $mediumBrown;
-$navbarBackgroundHighlight:       $mediumBrown;
+$navbarBackground:                $altRed;
+$navbarBackgroundHighlight:       $altRed;
 
-$navbarText:                      $lightBrown;
-$navbarLinkColor:                 $lightBrown;
+$navbarText:                      $darkBrown;
+$navbarLinkColor:                 $darkBrown;
 $navbarLinkColorHover:            $white;
 $navbarLinkColorActive:           $navbarLinkColorHover;
 $navbarLinkBackgroundHover:       transparent;
@@ -214,95 +241,99 @@ $fluidGridGutterWidth:    2.127659574%;
 $navbarLinkBackground:            transparent;	
 // Footer (gko addon)
 // -------------------------
-$footerHeight:                    40px;;
-$footerBackground:                transparent;;
-$footerText:                      $navbarText;;
-$footerLinkColor:                 $navbarLinkColor;;
-$footerLinkBackground:       	  transparent;;
-$footerLinkColorHover:            $navbarLinkColorHover;;
-$footerLinkBackgroundHover:       transparent;;
+$footerHeight:                    40px;
+$footerBackground:                $lightBrown;
+$footerText:                      $darkBrown;
+$footerLinkColor:                 $darkBrown;
+$footerLinkBackground:       	  transparent;
+$footerLinkColorHover:            $white;
+$footerLinkBackgroundHover:       transparent;
 
 @import "twitter/bootstrap";
 @import "gko/public/base";
 @import "galleria";
-@import "jscrollpane";
-
 /*-----------------------------------------
  STRUCTURAL LAYOUT 
 ----------------------------------------- */
-body {
-	background: $bodyBackground image-url("bg.png") bottom right repeat-y;
-}
+
 .page-title {
 	font-weight: normal;
 	margin-bottom: $baseLineHeight;
+	text-transform: uppercase;
 }
-
 #left-sidebar {
-	background-color: $darkBrown;
-	max-width: $leftbarWidth;
-	padding: $baseLineHeight;
-	.nav > li > a {
-	  padding: 8px 0;
-	}
-	.nav > li > a:hover {
-	  background-color: transparent;
-	}
+	display: none;
 }
-#content-container {
-	background-color: $lightBrown;
-}
-#page-text {
-	padding: $baseLineHeight;
+.html-text {
+	font-weight: 300;
 }
 
 /*-----------------------------------------
  HEADER
 ----------------------------------------- */
 .navbar {
-	background-color: $darkBrown;
-	margin-bottom: 0;
-}
-.container-fluid {
-	padding: 0;
-}
-.navbar-inner {
-	padding: 0;
-	position: relative;
-}
-
-.navbar .brand {
-	margin: 0;
-	padding: 0;
 	background-color: $altRed;
-
-	a {
+	background-image: image-url("bg_h.png");
+	background-position: top left;
+	background-repeat: repeat-x;
+	margin-bottom: 0;
+	.brand {
+		margin: 39px 0 0 0;
 		padding: 0;
-		margin: 0 auto;
-		background: $altRed image-url("logo.png") center center no-repeat;
-		background-size: contain;
-		cursor: pointer;
-		text-decoration: none;
-		display: block;
-		width: $leftbarWidth;
-		height: 120px;
-		@include hide-text;
-		
+		background-color: $altRed;
+		a {
+			padding: 0;
+			margin: 0 auto;
+			background: $altRed image-url("logo.png") center center no-repeat;
+			background-size: contain;
+			cursor: pointer;
+			text-decoration: none;
+			display: block;
+			width: $navbarWidth;
+			height: 120px;
+			@include hide-text;
+		}
+	}
+	.btn-navbar {
+		text-shadow: none;
+		@include buttonBackground($lightBrown, $mediumBrown);
+
+	}
+	ul.nav {
+		@include center-block();
+		left: auto;
+		float: none;
+		@include nav-link($altRed);
 	}
 }
-.navbar .btn-navbar {
-	text-shadow: none;
-}
-.header-top {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
+
+
 /*-----------------------------------------
  FOOTER
 ----------------------------------------- */
-#footer {
-	padding: $baseLineHeight 0;
+
+footer {
+	padding: 0 20px;
+	nav {
+		text-align: center;
+	}
+	ul.nav {
+		@include center-block();
+		left: auto;
+		float: none;
+	}
+	ul.nav > li > a {
+		text-shadow: none;
+		font-size: 14px;
+	}
+}
+
+#copyright-container {
+	padding: 0 30px;
+}
+#site-by {
+	font-size: 10px;
+	text-align: center;;
 }
 /*-----------------------------------------
  CONTENT
@@ -312,165 +343,102 @@ body {
  RESPONSIVE
 ----------------------------------------- */
 @import "twitter/bootstrap/responsive";
-
-
 @media (max-width: 767px) {
 	body {
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 0px;
+		padding-right: 0px;
 	}
-	#page-text {
-		height: auto;
+	.container-fluid {
+		padding: 20px;
 	}
-
-}
+}	
 @media (max-width: 979px) {
-
-  // GRID & CONTAINERS
-  // -----------------
-  // Remove width from containers
-  .container {
-    width: auto;
-  }
-  // Fluid rows
-  .row-fluid {
-    width: 100%;
-  }
-  // Make all grid-sized elements block level again
-  [class*="span"],
-  .row-fluid [class*="span"] {
-    float: none;
-    display: block;
-    width: auto;
-    margin-left: 0;
-  }
-	.navbar-inner {
-		background-color: $altRed;
-		@include gradient-vertical($altRed, $altRed);
-	  	@include border-radius(0);
-	  	@include box-shadow(none);
-		padding: 0
-	}
-	.navbar .brand {
-		float: none;
-		text-align: center;
-		
-	}
-	.nav-collapse {
-		background-color: $darkBrown;
+	.navbar {
+		.brand {
+			float: none;
+			text-align: center;
+			margin: 39px 0 0 0;
+		}	
 	}
 	
-	.nav-collapse nav,
-	.nav-collapse .nav {
-		@include clearfix();
-	}
-	
-	.nav-collapse .nav > li,
-	.nav-collapse .dropdown-menu li {
-		border-bottom: 1px solid $navbarLinkColor;
-	}
-	
-	.nav-collapse .dropdown-menu li:first-child {
-		border-top: 1px solid $navbarLinkColor;
-	}
-	
-	.nav-collapse .dropdown-menu li:last-child {
-		border-bottom: none;
-	}
-	
-	.nav-collapse .nav > li > a,
-	.nav-collapse .dropdown-menu a {
-	  font-weight: normal;
-	  @include border-radius(0);
-	}
-	.nav-collapse .dropdown-menu a:hover {
-		color: $navbarLinkColorHover;
-	}
-
-	#left-sidebar {
-		display: none;
-	}
-	
-	.galleria-container {
-	    max-height: 640px;
+	#locales-menu {
+		position: absolute;
+		top: 39 + ($baseLineHeight / 2);
+		right: $baseLineHeight / 2;
 	}
 }
 @media (min-width: 980px) {
 
-	.navbar .brand {
-
-		margin-top: 0;
-		letter-spacing: 4px;
-		text-align: center;
-		text-transform: uppercase;
-		line-height: 42px;
-		font-weight: 300;
-		font-size: 32px;
+	/*-- LAYOUT
+	----------------------------------------- */
+	.container-fluid {
+		padding: 0;
 	}
 
-	
-	.navbar ul.nav > li > a {
-		text-transform: uppercase;
-		text-align: center;
-		font-size: $baseFontSize - 3;
-		letter-spacing: 2px;
-		text-shadow: none;
-		padding: 3px 15px;
-	}
-	#primary-menu {
-		float: left;
-	}
-	#primary-menu ul.nav {
-		margin-top: 80px;
-	}
-	
-	#main-column {
-		margin-left: 0;
-	}
-	#main-column.fixed {
-		max-height: 390px;
-		height: 390px;
-	}
-	#page-text.fixed {
-		height: 390px;
-	}
-	
-	.galleria-container {
-	    max-height: 490px;
-		min-height: 490px;
-	}
-	
-	.page {
-		position: relative;
-		max-width: 880px;
-	}
-	
-	.page .span8 {
-		min-width: 580px;
-	}
-	
-	.page .span4 {
-		max-width: 300px;
+	#main-container {
 		position: absolute;
-		right: 0;
+		left: $navbarWidth;
+		min-height: 100%;
+		max-width: 800px + ($baseLineHeight * 2);
+	}
+	
+	#main {
+		padding: $baseLineHeight * 2;
+	}
+	
+	/*-- HEADER
+	----------------------------------------- */
+	.navbar {
+		position: fixed;
 		top: 0;
-		z-index: 1;
+		left: 0;
+		min-height: 100%;
+		z-index: 10;
+		min-width: $navbarWidth;
+		width: $navbarWidth;
+		margin-bottom: 0;
+		
+		ul.nav > li > a {
+			text-align: center;
+		}
+		.nav-collapse {
+			position: absolute;
+			top: 200px;
+			left: 0;
+			right: 0;
+		}
+		.footer-nav {
+			position: absolute;
+			bottom: 30px;
+			left: 0;
+			right: 0;
+			ul.nav > li > a {
+				font-size: 12px;
+			}
+		}
+	}
+	
+	.dropdown-menu.subnav {
+		position: fixed;
+		left: $navbarWidth;
+		top: 0;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		min-width: $navbarWidth;
+		border: none;
+		border-right: 1px solid $mediumBrown;
 		background-color: $lightBrown;
-	}
-	
-	.galleria-thumbnails-container {
-		background: transparent;
-	}
-	
-	footer .nav {
-		margin-left: 9px;
-		> li {
-			float: none;
-		}
-		> li > a {
-		  padding: 8px 0;
+		z-index: 2;
+		margin: 0;
+		padding: 200px 0;
+		@include box-sizing(border-box);
+		@include nav-link($lightBrown);
+		@include box-shadow(none);
+		@include border-radius(0);
+		a {
+			padding: 9px 10px 11px;
+			line-height: 19px;
 		}
 	}
-
-	
 }

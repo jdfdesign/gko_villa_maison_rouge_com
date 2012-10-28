@@ -5,9 +5,7 @@ $thumbnailContainerHeight: 100px;
     overflow: hidden;
 }
 .galleria-container img {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
+    @include user-select(none);
 }
 .galleria-stage {
     position: absolute;
