@@ -165,7 +165,7 @@ GEM
       addressable (~> 2.3)
     less (2.2.2)
       commonjs (~> 0.2.6)
-    less-rails (2.2.4)
+    less-rails (2.2.5)
       actionpack (>= 3.1)
       less (~> 2.2.0)
     less-rails-bootstrap (2.1.1)

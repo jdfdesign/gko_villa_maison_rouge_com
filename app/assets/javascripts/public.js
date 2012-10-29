@@ -163,7 +163,7 @@ var Navigation = {
 	
 	init: function() {
 
-		$('ul.nav-menu a').attr('data-remote', true)
+		$('ul.nav-menu>li>a').attr('data-remote', true)
 		.on('ajax:beforeSend', function(event, xhr, settings) {
 			var link = $(this),
 				li = link.parent(),
@@ -204,21 +204,6 @@ var Navigation = {
 	    })
 
 
-		$('ul.subnav a').attr('data-remote', true)
-		.on('ajax:beforeSend', function(event, xhr, settings) {
-			var link = $(this),
-				parent = link.parent();
-			if(!parent.hasClass('active')) {
-				parent.addClass('active');
-				parent.siblings().removeClass('active');
-				Page.close(false);
-				rightPadding = parent.parent().outerWidth(true) + $navbar.outerWidth(true);
-			}
-		})
-		.on('ajax:success',
-	    function(evt, xhr, status) {
-			Page.onLoad(eval(xhr));
-	    })
 
 	},
 	
@@ -253,6 +238,28 @@ var Navigation = {
 			}
 		});	
 		
+		
+		$('ul.subnav a').attr('data-remote', true)
+		.on('ajax:beforeSend', function(event, xhr, settings) {
+			var link = $(this),
+				parent = link.parent();
+			if(!parent.hasClass('active')) {
+				parent.addClass('active');
+				parent.siblings().removeClass('active');
+				Page.close(false);
+				rightPadding = parent.parent().outerWidth(true) + $navbar.outerWidth(true);
+			}
+			
+			
+			if($('.navbar .nav-collapse').hasClass('in')) {
+				$('a.btn-navbar').trigger('click');
+			}
+		})
+		.on('ajax:success',
+	    function(evt, xhr, status) {
+			Page.onLoad(eval(xhr));
+	    })
+	
 		subnavigationEnabled = true;
 	},
 	
