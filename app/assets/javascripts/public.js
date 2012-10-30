@@ -11,7 +11,7 @@ var $mainRow;
 var subnavigationEnabled = false;
 var ie8 = false;
 var $window,$body, $navbar, aspectRatio, isMobile;
-
+var hasCarousel = false;
 var Site = {
 	
 	init: function() {
@@ -37,15 +37,18 @@ var Site = {
 		if(isMobile) {
 			Navigation.restore();
 			$container.css({
-				maxWidth: "none"
+				maxWidth: "none",
+				width: "auto"
 			});
 	
 		} else {
 			Navigation.create();
 			var h = $window.height();
-			var maxCarouselHeight = $(".galleria").length == 1 ? h - $('.galleria').position().top : h;
+			var maxCarouselHeight = $('.galleria').length ? h - $('.galleria').position().top : h;
+		//	console.log("h " + h + ' top ' + $('.galleria').position().top);
 			$container.css({
-				maxWidth: maxCarouselHeight * 1.15
+				maxWidth: maxCarouselHeight * 1.15,
+				width: maxCarouselHeight * 1.15
 			});
 		}
 
@@ -95,7 +98,7 @@ var Page = {
 		
 		$container.find("embed").hide().remove();
 		
-		if($('.galleria').length > 0) {
+		if(hasCarousel) {
 			$('.galleria').data('galleria').destroy();
 		}
 		
@@ -270,7 +273,9 @@ var Navigation = {
 
 var Carousel = {
 	init: function() {
-		if($(".galleria").length > 0) {
+		hasCarousel = $(".galleria").length > 0;
+		
+		if(hasCarousel) {
 			$(".galleria").galleria({
 				debug: false,
 				autoplay: true,
@@ -280,7 +285,8 @@ var Carousel = {
 				transition: 'slide',
 				thumbMargin: 10,
 				showCounter: false,
-				showInfo: false
+				showInfo: false,
+				thumbnails: $(".galleria").children().length > 1
 			})
 		}
 	},
