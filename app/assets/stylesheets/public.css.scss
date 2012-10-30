@@ -23,13 +23,14 @@ $lightBrown: #ac9f93;
 			border-bottom: none;
 		};
 		a {
-			font-size: 14px;
+			font-size: 12px;
 			text-transform: uppercase;
 			text-align: left;
-			letter-spacing: 1px;
 			text-shadow: none;
 			font-family: $altFontFamily;
 			font-weight: 300;
+			padding: 7px 10px 9px;
+			line-height: 19px;
 		}
 	}
 
@@ -63,7 +64,7 @@ $purple:                #7a43b6;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $darkBrown;
+$bodyBackground:        $altRed;
 $textColor:             $lightBrown;
 
 
@@ -267,15 +268,16 @@ $footerLinkBackgroundHover:       transparent;
 .html-text {
 	font-weight: 300;
 }
-
+#main-container {
+	background-color: $darkBrown;
+	min-height: 100%;
+}
 /*-----------------------------------------
  HEADER
 ----------------------------------------- */
 .navbar {
 	background-color: $altRed;
-	background-image: image-url("bg_h.png");
-	background-position: top left;
-	background-repeat: repeat-x;
+
 	margin-bottom: 0;
 	.brand {
 		margin: 39px 0 0 0;
@@ -347,6 +349,9 @@ footer {
 	body {
 		padding-left: 0px;
 		padding-right: 0px;
+		background-image: image-url("bg_h.png");
+		background-position: top left;
+		background-repeat: repeat-x;
 	}
 	.container-fluid {
 		padding: 20px;
@@ -371,6 +376,15 @@ footer {
 
 	/*-- LAYOUT
 	----------------------------------------- */
+	
+	body {
+		padding-left: 0px;
+		padding-right: 0px;
+		background-image: image-url("bg.png");
+		background-position: top right;
+		background-repeat: repeat-y;
+	}
+	
 	.container-fluid {
 		padding: 0;
 	}
@@ -397,7 +411,9 @@ footer {
 		min-width: $navbarWidth;
 		width: $navbarWidth;
 		margin-bottom: 0;
-		
+		.brand {
+			margin: 0;
+		}
 		ul.nav > li > a {
 			text-align: center;
 		}
@@ -412,9 +428,6 @@ footer {
 			bottom: 30px;
 			left: 0;
 			right: 0;
-			ul.nav > li > a {
-				font-size: 12px;
-			}
 		}
 	}
 	
@@ -425,7 +438,7 @@ footer {
 		min-height: 100%;
 		height: auto !important;
 		height: 100%;
-		min-width: $navbarWidth;
+	//	min-width: $navbarWidth;
 		border: none;
 		border-right: 1px solid $mediumBrown;
 		background-color: $lightBrown;
@@ -436,9 +449,5 @@ footer {
 		@include nav-link($lightBrown);
 		@include box-shadow(none);
 		@include border-radius(0);
-		a {
-			padding: 9px 10px 11px;
-			line-height: 19px;
-		}
 	}
 }

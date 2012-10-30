@@ -4,24 +4,24 @@
 var animationSpeed = 400;
 var animationEasing = "easeOutCubic";
 var rightPadding = 220;
+var mainPadding = 0;
 var loaded = false;
 var $container;
 var $mainRow;
 var subnavigationEnabled = false;
 var ie8 = false;
-var $window,$body, $bg, $navbar, aspectRatio, isMobile;
+var $window,$body, $navbar, aspectRatio, isMobile;
 
 var Site = {
 	
 	init: function() {
 		$body = $("body"),
 		$window = $(window);
-		$bg = $("#bg");
 		$navbar = $('.navbar:first');
 		$container = $('#main-container');
 		$mainRow = $('#main');
-		aspectRatio = $bg.width() / $bg.height();
 		rightPadding = $navbar.width();
+		mainPadding = parseInt($mainRow .css('padding-left')) * 2;
 		if($.browser.version.substr(0, 1) == "8") {
 			ie8 = true;
 		}
@@ -37,29 +37,16 @@ var Site = {
 		if(isMobile) {
 			Navigation.restore();
 			$container.css({
-				width: "auto"
+				maxWidth: "none"
 			});
+	
 		} else {
 			Navigation.create();
+			var h = $window.height();
+			var maxCarouselHeight = $(".galleria").length == 1 ? h - $('.galleria').position().top : h;
 			$container.css({
-				width: $window.width() - rightPadding
+				maxWidth: maxCarouselHeight * 1.15
 			});
-		}
-
-		if(($window.width() / $window.height()) < aspectRatio) {
-			$bg.removeClass().addClass('bgheight');
-			var newLeft = 0 - ($bg.width() - $window.width()) / 2;
-			$bg.css({
-				left : newLeft,
-				top : 0
-			})
-		} else {
-			$bg.removeClass().addClass('bgwidth');
-			var newTop = 0 - ($bg.height() - $window.height()) / 2;
-			$bg.css({
-				left : 0,
-				top : newTop
-			})
 		}
 
 		$body.animate({
@@ -75,7 +62,8 @@ var Site = {
 					
 					if(path != undefined) {
 						path = path.replace('&', '&amp;');
-						$('#nav a[href=#' + path.split('/')[0] + ']').click();
+					
+						$('a[href="/' + path + '"]').click();
 						setTimeout(function() {
 							$('.subnav a[href$=' + path.split('/')[1] + ']').click()
 						}, animationSpeed * 2)
