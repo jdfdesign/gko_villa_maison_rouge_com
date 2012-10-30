@@ -7347,25 +7347,28 @@ footer ul.nav > li > a {
   body {
     padding-left: 0px;
     padding-right: 0px;
-    background-image: url(/assets/bg_h.png);
-    background-position: top left;
-    background-repeat: repeat-x;
   }
 
-  /* line 356, ../../app/assets/stylesheets/public.css.scss */
+  /* line 354, ../../app/assets/stylesheets/public.css.scss */
   .container-fluid {
     padding: 20px;
   }
 }
 @media (max-width: 979px) {
-  /* line 362, ../../app/assets/stylesheets/public.css.scss */
+  /* line 359, ../../app/assets/stylesheets/public.css.scss */
+  .navbar {
+    background-image: url(/assets/bg_h.png);
+    background-position: top left;
+    background-repeat: repeat-x;
+  }
+  /* line 363, ../../app/assets/stylesheets/public.css.scss */
   .navbar .brand {
     float: none;
     text-align: center;
     margin: 39px 0 0 0;
   }
 
-  /* line 369, ../../app/assets/stylesheets/public.css.scss */
+  /* line 370, ../../app/assets/stylesheets/public.css.scss */
   #locales-menu {
     position: absolute;
     top: 50px;
@@ -7375,7 +7378,7 @@ footer ul.nav > li > a {
 @media (min-width: 980px) {
   /*-- LAYOUT
   ----------------------------------------- */
-  /* line 380, ../../app/assets/stylesheets/public.css.scss */
+  /* line 381, ../../app/assets/stylesheets/public.css.scss */
   body {
     padding-left: 0px;
     padding-right: 0px;
@@ -7384,12 +7387,12 @@ footer ul.nav > li > a {
     background-repeat: repeat-y;
   }
 
-  /* line 388, ../../app/assets/stylesheets/public.css.scss */
+  /* line 389, ../../app/assets/stylesheets/public.css.scss */
   .container-fluid {
     padding: 0;
   }
 
-  /* line 392, ../../app/assets/stylesheets/public.css.scss */
+  /* line 393, ../../app/assets/stylesheets/public.css.scss */
   #main-container {
     position: absolute;
     left: 220px;
@@ -7397,14 +7400,14 @@ footer ul.nav > li > a {
     max-width: 844px;
   }
 
-  /* line 399, ../../app/assets/stylesheets/public.css.scss */
+  /* line 400, ../../app/assets/stylesheets/public.css.scss */
   #main {
     padding: 44px;
   }
 
   /*-- HEADER
   ----------------------------------------- */
-  /* line 405, ../../app/assets/stylesheets/public.css.scss */
+  /* line 406, ../../app/assets/stylesheets/public.css.scss */
   .navbar {
     position: fixed;
     top: 0;
@@ -7415,22 +7418,22 @@ footer ul.nav > li > a {
     width: 220px;
     margin-bottom: 0;
   }
-  /* line 414, ../../app/assets/stylesheets/public.css.scss */
+  /* line 415, ../../app/assets/stylesheets/public.css.scss */
   .navbar .brand {
     margin: 0;
   }
-  /* line 417, ../../app/assets/stylesheets/public.css.scss */
+  /* line 418, ../../app/assets/stylesheets/public.css.scss */
   .navbar ul.nav > li > a {
     text-align: center;
   }
-  /* line 420, ../../app/assets/stylesheets/public.css.scss */
+  /* line 421, ../../app/assets/stylesheets/public.css.scss */
   .navbar .nav-collapse {
     position: absolute;
     top: 200px;
     left: 0;
     right: 0;
   }
-  /* line 426, ../../app/assets/stylesheets/public.css.scss */
+  /* line 427, ../../app/assets/stylesheets/public.css.scss */
   .navbar .footer-nav {
     position: absolute;
     bottom: 30px;
@@ -7438,7 +7441,7 @@ footer ul.nav > li > a {
     right: 0;
   }
 
-  /* line 434, ../../app/assets/stylesheets/public.css.scss */
+  /* line 435, ../../app/assets/stylesheets/public.css.scss */
   .dropdown-menu.subnav {
     position: fixed;
     left: 220px;

@@ -349,16 +349,17 @@ footer {
 	body {
 		padding-left: 0px;
 		padding-right: 0px;
-		background-image: image-url("bg_h.png");
-		background-position: top left;
-		background-repeat: repeat-x;
 	}
+
 	.container-fluid {
 		padding: 20px;
 	}
 }	
 @media (max-width: 979px) {
 	.navbar {
+		background-image: image-url("bg_h.png");
+		background-position: top left;
+		background-repeat: repeat-x;
 		.brand {
 			float: none;
 			text-align: center;
