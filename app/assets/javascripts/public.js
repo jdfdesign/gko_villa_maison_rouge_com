@@ -3,11 +3,14 @@
 //= require jquery.ba-hashchange.js
 var animationSpeed = 400;
 var animationEasing = "easeOutCubic";
-var rightPadding = 220;
+var navBarWidth = 220;
+var rightPadding = navBarWidth;
 var mainPadding = 0;
 var loaded = false;
 var $container;
 var $mainRow;
+var isUnderBreakPoint = false;
+var wasUnderBreakPoint = false;
 var subnavigationEnabled = false;
 var ie8 = false;
 var $window,$body, $navbar, aspectRatio, isMobile;
@@ -20,7 +23,8 @@ var Site = {
 		$navbar = $('.navbar:first');
 		$container = $('#main-container');
 		$mainRow = $('#main');
-		rightPadding = $navbar.width();
+		navBarWidth = $navbar.width();
+		rightPadding = navBarWidth;
 		mainPadding = parseInt($mainRow .css('padding-left')) * 2;
 		if($.browser.version.substr(0, 1) == "8") {
 			ie8 = true;
@@ -30,19 +34,37 @@ var Site = {
 		$window.on("throttledresize", Site.onResize );
 		$window.on("hashchange", Site.onHashChange );
 		Navigation.init();
-		Site.onResize();	
+		Site.onResize();
+		if(isUnderBreakPoint) {
+			Navigation.attachEvents();
+		}
+		loaded = true;	
 	},
 	onResize: function() {
-		isMobile = ($window.width() < 980);
-		if(isMobile) {
+		wasUnderBreakPoint = isUnderBreakPoint;
+		isUnderBreakPoint = ($window.width() < 980);
+
+		if(isUnderBreakPoint) {
+
 			Navigation.restore();
 			$container.css({
 				maxWidth: "none",
 				width: "auto"
 			});
-	
 		} else {
-			Navigation.create();
+			
+			if(wasUnderBreakPoint || !loaded) {
+				
+				navBarWidth = $navbar.width();
+				Navigation.create();
+				var activeLink = $(".subnav li.active:first");
+				if(activeLink.length > 0) {
+					rightPadding = activeLink.parent().outerWidth(true) + navBarWidth;
+					Navigation.show(activeLink.parent());
+				}
+				$container.css({left : rightPadding});
+			}
+			
 			var h = $window.height();
 			var maxCarouselHeight = $('.galleria').length ? h - $('.galleria').position().top : h;
 		//	console.log("h " + h + ' top ' + $('.galleria').position().top);
@@ -59,7 +81,7 @@ var Site = {
 				left : 0
 			}, animationSpeed / 1.5, animationEasing, function() {
 				if(!loaded) {
-					loaded = true;
+					
 					var url = window.location.href;
 					var path = (url.split('#')[1]);
 					
@@ -74,7 +96,7 @@ var Site = {
 				}
 			})
 		})
-
+		
 	},
 	onHashChange: function() {
 		var hash = location.hash;
@@ -165,15 +187,9 @@ var Navigation = {
 				Page.close();
 				
 				if(subnav.length > 0) {
-					if(subnav.is(":hidden")) {
-						rightPadding = subnav.outerWidth(true) + $navbar.outerWidth(true);
-						subnav.show().delay(animationSpeed).animate({
-							left : $navbar.width()
-						}, animationSpeed, animationEasing)
-					}
-
+					Navigation.show(subnav);
 				} else {
-					rightPadding = $navbar.width();
+					rightPadding = navBarWidth;
 					Navigation.close();
 				}
 			}
@@ -194,7 +210,27 @@ var Navigation = {
 			Page.onLoad(eval(xhr));
 	    })
 
-
+		
+		$('ul.nav-menu ul.dropdown-menu a').attr('data-remote', true)
+		.on('ajax:beforeSend', function(event, xhr, settings) {
+			var link = $(this),
+				parent = link.parent();
+			if(!parent.hasClass('active')) {
+				parent.addClass('active');
+				parent.siblings().removeClass('active');
+				Page.close(false);
+				rightPadding = parent.parent().outerWidth(true) + navBarWidth;
+			}
+			
+			
+			if($('.navbar .nav-collapse').hasClass('in')) {
+				$('a.btn-navbar').trigger('click');
+			}
+		})
+		.on('ajax:success',
+	    function(evt, xhr, status) {
+			Page.onLoad(eval(xhr));
+	    })
 
 	},
 	
@@ -216,6 +252,12 @@ var Navigation = {
 				$(this).hide();
 			})
 		}
+		
+	},
+	
+	attachEvents: function() {
+
+		
 	},
 	
 	create: function() {
@@ -226,31 +268,11 @@ var Navigation = {
 				link = subnav.parent();
 			if(subnav.length > 0) {
 				subnav.addClass('subnav').addClass('nav-menu-' + link.attr('id')).appendTo('body');
+				subnav.css({'display': 'none', 'left' : '0'});
 			}
 		});	
 		
-		
-		$('ul.subnav a').attr('data-remote', true)
-		.on('ajax:beforeSend', function(event, xhr, settings) {
-			var link = $(this),
-				parent = link.parent();
-			if(!parent.hasClass('active')) {
-				parent.addClass('active');
-				parent.siblings().removeClass('active');
-				Page.close(false);
-				rightPadding = parent.parent().outerWidth(true) + $navbar.outerWidth(true);
-			}
-			
-			
-			if($('.navbar .nav-collapse').hasClass('in')) {
-				$('a.btn-navbar').trigger('click');
-			}
-		})
-		.on('ajax:success',
-	    function(evt, xhr, status) {
-			Page.onLoad(eval(xhr));
-	    })
-	
+		rightPadding = navBarWidth;
 		subnavigationEnabled = true;
 	},
 	
@@ -264,9 +286,20 @@ var Navigation = {
 				subnav = $('ul.nav-menu-' + linkId);
 			if(subnav.length > 0) {
 				subnav.removeClass('subnav').removeClass('nav-menu-' + linkId).appendTo(link);
+				subnav.css({'display': 'block', 'left' : 'auto'});
 			}
 		});
+		rightPadding = navBarWidth;
 		subnavigationEnabled = false;
+	},
+	
+	show: function(target) {
+		if(target.is(":hidden")) {
+			rightPadding = target.outerWidth(true) + $navbar.outerWidth(true);
+			target.show().delay(animationSpeed).animate({
+				left : navBarWidth
+			}, animationSpeed, animationEasing)
+		}
 	}
 }
 

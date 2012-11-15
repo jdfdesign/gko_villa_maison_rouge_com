@@ -1,10 +1,10 @@
 <!doctype html>
 <%= render 'html_tag' %>
 <%= render 'head' %>
-<body id='<%= @body_id %>'>
+<body id='<%= @body_id %>' >
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-<div id="wrapper-wide-body">
+<div id="wrapper-wide-body" <%= "class='mobile-device'" if is_mobile_device? %>>
   <%= render 'header' %>
   <div id='main-container' class='container-fluid'>
     <% if content_for?(:page_container) %>

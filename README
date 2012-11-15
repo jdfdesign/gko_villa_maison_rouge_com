@@ -1,4 +1,4 @@
-villa-maison-rouge.local
+http://gko-villa-maison-rouge-com.local
 
 cd ~/Github/gko_villa_maison_rouge_com
 tail -f log/development.log

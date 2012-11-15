@@ -277,7 +277,6 @@ $footerLinkBackgroundHover:       transparent;
 ----------------------------------------- */
 .navbar {
 	background-color: $altRed;
-
 	margin-bottom: 0;
 	.brand {
 		margin: 39px 0 0 0;
@@ -353,6 +352,7 @@ footer {
 
 	.container-fluid {
 		padding: 20px;
+		@include box-sizing(border-box);
 	}
 }	
 @media (max-width: 979px) {
@@ -399,6 +399,7 @@ footer {
 	
 	#main {
 		padding: $baseLineHeight * 2;
+		@include box-sizing(border-box);
 	}
 	
 	/*-- HEADER
